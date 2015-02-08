@@ -32,7 +32,7 @@ class Job < ActiveRecord::Base
   
   def watermark_it
     puts 'watermarking...'
-    filename = "#{Rails.root}/" + self.file_file_name
+    filename = "#{Rails.root}/tmp/" + self.file_file_name
     puts filename
     
     watermark(self.info, self.file.expiring_url, filename)
