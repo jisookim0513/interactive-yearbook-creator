@@ -28,7 +28,7 @@ module ZipHelper
   
   #Takes a job entry, extrat it and puts individual file to the aws url
   def process_images_from_job(job)
-    aws_url = job.file.expiring_url(10)
+    aws_url = job.file.expiring_url(10.minutes)
     zip_path = "#{Rails.root}" + Tempfile.new('tmp').path
     pid = system('wget -O %{dir} %{url}'  % {:dir => zip_path ,:url => aws_url})
     tmp_dir = "#{Rails.root}" +  Dir.mktmpdir
