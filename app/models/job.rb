@@ -28,6 +28,7 @@ class Job < ActiveRecord::Base
   has_attached_file :file, :storage => :s3, :s3_credentials => S3_CREDENTIALS
   has_attached_file :output, :storage => :s3, :s3_credentials => S3_CREDENTIALS
   do_not_validate_attachment_file_type :file
+  do_not_validate_attachment_file_type :output
 
   # after_commit :make_watermark_worker
 
@@ -40,7 +41,9 @@ class Job < ActiveRecord::Base
     filename = "#{Rails.root}/tmp/" + self.file_file_name
     puts filename
 
-    watermark(self.info, self.file.expiring_url, filename)
+    fb_info = get_facebook_info(self.info)[0]
+    
+    watermark(fb_info, self.file.expiring_url, filename)
     # TODO: check if helper returns true
 
     file = File.open(filename)
@@ -53,10 +56,6 @@ class Job < ActiveRecord::Base
     if self.started
       return
     end
-
-    self.started = true
-    self.save
-
     WatermarkFilesWorker.perform_async(self.id)
   end
 

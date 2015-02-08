@@ -9,9 +9,12 @@ class WatermarkFilesWorker
     job = Job.find_by_id(job_id)
     p job
     
-    if job.blank?
+    if job.blank? or job.started
+      puts 'skipping job'
       return
     else
+      job.started = true
+      job.save
       job.watermark_it
     end
 

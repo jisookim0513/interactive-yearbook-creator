@@ -1,9 +1,24 @@
 class JobsController < ApplicationController
+  include WatermarkHelper
+  
   def create
     par = job_params
     par[:started] = false
-    @job = Job.create( par )
-    @job.make_watermark_worker
+
+    fb_list = get_facebook_info(par[:info])
+    
+    if fb_list.count == 1
+      # make watermark and go to processed page
+      @job = Job.create( par )
+      @job.make_watermark_worker
+      render :create
+      return
+    else
+      @job = Job.new
+      render 'static/missing_fb'
+      return
+    end
+    
   end
 
   private
