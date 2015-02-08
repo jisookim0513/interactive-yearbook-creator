@@ -17,25 +17,21 @@ input {
 	color: #020743;
 }
 
+hr {
+    border: none;
+    height: 4px;
+    width: 70%;
+    color: white;
+    background-color: white;
+}
+
 #email {
 	margin-top: 50px;
 	margin-bottom: 20px;
 	text-align: center;
 }
 
-#school-name {
-	margin-top: 10px;
-	margin-bottom: 20px;
-	text-align: center;
-}
-
-#class-year {
-	margin-top: 10px;
-	margin-bottom: 20px;
-	text-align: center;
-}
-
-#upload-file-fake {
+#extra-info {
 	margin-top: 10px;
 	margin-bottom: 20px;
 	text-align: center;

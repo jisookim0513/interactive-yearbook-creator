@@ -61,3 +61,6 @@ gem 'nokogiri'
 
 # for facebook
 gem 'koala'
+
+# for background jobs
+gem 'sidekiq'
