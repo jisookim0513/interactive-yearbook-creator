@@ -32,6 +32,10 @@ class Job < ActiveRecord::Base
   # after_commit :make_watermark_worker
 
   def watermark_it
+    if not self.output.blank?
+      return
+    end
+    
     puts 'watermarking...'
     filename = "#{Rails.root}/tmp/" + self.file_file_name
     puts filename
