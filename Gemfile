@@ -42,5 +42,6 @@ gem 'spring',        group: :development
 
 gem "paperclip", "~> 4.2"
 gem "live_paper"
+gem "rubyzip", ">= 1.0.0"
 
 gem 'annotate', '~> 2.6.5'
