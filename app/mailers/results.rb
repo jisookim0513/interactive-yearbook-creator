@@ -5,4 +5,8 @@ class Results < ActionMailer::Base
     mail(:to => "krchtchk@gmail.com", :subject => "Another test...")
   end
 
+  def job_mail(job_id)
+    @job = Job.find(job_id)
+  end
+  
 end

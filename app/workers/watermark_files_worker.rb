@@ -8,12 +8,14 @@ class WatermarkFilesWorker
 
     job = Job.find(job_id)
     p job
-    # if job.blank?
-    #   return
-    # else
-    job.watermark_it
-    # end
-
     
+    if job.blank? or job.started
+      return
+    else
+      job.started = true
+      job.watermark_it
+    end
+
+    Results.job_mail(job_id).deliver
   end
 end

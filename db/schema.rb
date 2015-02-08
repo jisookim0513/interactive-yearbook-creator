@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208063819) do
+ActiveRecord::Schema.define(version: 20150208193647) do
 
   create_table "images", force: true do |t|
     t.integer  "status"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150208063819) do
     t.string   "output_content_type"
     t.integer  "output_file_size"
     t.datetime "output_updated_at"
+    t.boolean  "started"
   end
 
   create_table "metadata", force: true do |t|
