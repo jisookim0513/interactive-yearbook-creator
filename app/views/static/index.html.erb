@@ -8,6 +8,9 @@
 
 
 <%= form_for @job, url: {action: "create", controller: 'jobs'}, html: {class: "upload_form"} do |f| %>
+    <div id="email">
+        Email: <%= f.text_field :email, class: 'text_field' %>
+    </div>
     <div id="school-name">
         School Name: <%= f.text_field :school, class: 'text_field' %>
     </div>
@@ -24,7 +27,6 @@
     <%=  f.file_field :file %>
     </div>
     <div class="col-xs-2 col-xs-offset-5">
-
         <%= f.submit "Make it Interactive", class:"btn btn-block btn-primary" %>
     </div>
 <% end %>
