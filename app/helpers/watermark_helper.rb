@@ -4,7 +4,7 @@ module WatermarkHelper
 
   ACCESS_TOKEN = Rails.application.secrets.facebook_token
 
-  def get_facebook_info_from_url(url):
+  def get_facebook_info_from_url(url)
     url = url.split("/")[-1]
     url = url.split("?")[0]
     graph = Koala::Facebook::API.new
