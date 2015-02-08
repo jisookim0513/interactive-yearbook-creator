@@ -5,36 +5,25 @@
         Interactive Yearbook Creator 
     </h1>
 </div>
-<!-- <div class="col-xs-5 col-xs-offset-4" style="padding-top: 10px; padding-bottom: 10px">
-    <span class="col-xs-3">School Name:</span><span class="col-xs-2"><input name="schoolName" type="text" size="37" id="schoolName"/></span><br><br>
-    <span class="col-xs-3">Class Year:</span><span class="col-xs-2"><input name="classYear" type="text" size="37" id="classYear"/></span>
-</div>
-<div class="col-xs-4 col-xs-offset-4" style="padding-top: 10px; padding-bottom: 10px">
-    <button class="btn btn-block btn-info" onclick="onLoad()">
-        Upload file <span class="fa fa-upload"></span>
-    </button>
-    <br>
-    <input type="file" id="fileInput" onchange="handleFiles(this.files)" style="visibility:hidden;position:absolute;top:-50;left:-50"/>
-    <div style="text-align: center">
-        File selected: 
-        <span id="fileStatus"></span>
-        <br>
-        <br>
-    </div>
-    <button class="btn btn-block btn-info">
-        Make it interactive <span class="fa fa-gittip"></span>
-    </button>
-</div> -->
+
 
 <%= form_for @job, url: {action: "create", controller: 'jobs'}, html: {class: "upload_form"} do |f| %>
-   
-    School Name: <%= f.text_field :school %>
-    <br/>
-    Class Year: <%= f.text_field :class_year %>
+    <div id="school-name">
+        School Name: <%= f.text_field :school, class: 'text_field' %>
+    </div>
+    <div id="class-year">
+        Class Year : <%= f.text_field :class_year, class: 'text_field' %>
+    </div>
+    <input id="uploadFile" placeholder="Choose File" disabled="disabled" />
+    <div class="fileUpload btn btn-primary">
+        <span>Upload file <span class="fa fa-upload"></span></span>
+        <input id="job_file2" type="file" class="upload" name="job[file]" onclick="clicky"/>
+    </div>
     <br/>
     <%=  f.file_field :file %>
-    <br/>
-  <%= f.submit "Create" %>
+    <div class="col-xs-2 col-xs-offset-5">
+        <%= f.submit "Make it Interactive", class:"btn btn-block btn-primary" %>
+    </div>
 <% end %>
 
 

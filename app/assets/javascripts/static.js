@@ -7,8 +7,12 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
   alert('The File APIs are not fully supported in this browser.');
 }
 
-function onLoad() {
-    document.getElementById('fileInput').click();
+function onChange(file) {
+    document.getElementById("job_file").value = file;
+}
+
+function clicky() {
+    $('#job_file').click();
 }
 
 function handleFiles(files) {
@@ -21,3 +25,4 @@ function handleFiles(files) {
 function onFileReadComplete(event) { 
   alert("upload completed!")
 }
+
