@@ -4,6 +4,17 @@ module WatermarkHelper
 
   ACCESS_TOKEN = Rails.application.secrets.facebook_token
 
+  def get_facebook_info_from_url(url):
+    url = url.split("/")[-1]
+    url = url.split("?")[0]
+    graph = Koala::Facebook::API.new
+    result = graph.get_object(url)
+    fb_name = result["name"]
+    fb_id = result["id"]
+    fb_image_url = graph.get_picture(fb_id, {:height => "300", :width => "300"})
+    return [fb_name, fb_id, fb_image_url]
+  end
+
   def extract_facebook_info(id_name_dict, graph)
     fb_name = id_name_dict["name"]
     fb_id = id_name_dict["id"]
