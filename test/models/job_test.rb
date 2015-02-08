@@ -15,6 +15,7 @@
 #  output_content_type :string(255)
 #  output_file_size    :integer
 #  output_updated_at   :datetime
+#  started             :boolean
 #
 
 require 'test_helper'

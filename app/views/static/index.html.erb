@@ -2,7 +2,7 @@
     <h1>
         <!-- <i class="fa fa-facebook-official"></i>
         <i class="fa fa-book"></i> -->
-        Interactive Yearbook Creator 
+        Interactive Portrait Creator
     </h1>
     <hr>
 </div>
@@ -15,11 +15,11 @@
     <div id="extra-info">
         <%= f.text_field :info, class: 'text_field', placeholder: 'Extra info' %>
     </div>
-    <input id="uploadFile" placeholder="Choose File" disabled="disabled" />
     <div class="fileUpload btn btn-primary">
         <span>Upload file <span class="fa fa-upload"></span></span>
         <input id="job_file2" type="file" class="upload" name="job[file]" onchange="onChange(this.files[0])"/>
     </div>
+    <span id="uploadFile">Choose file</span>
     <br/>
     <div id="upload-file">
         <%=  f.file_field :file %>

@@ -1,0 +1,23 @@
+<div class="top" style="text-align: center">
+    <h1>
+        <!-- <i class="fa fa-facebook-official"></i>
+        <i class="fa fa-book"></i> -->
+        Interactive Yearbook Creator 
+    </h1>
+    <hr>
+    <br/>
+    <h3>
+        Sorry, we could not find the Facebook account.<br>
+        Please specify the Facebook page for the portrait.
+    </h3>
+    <br/>
+</div>
+
+<%= form_for @job, url: {action: "create_missing", controller: 'jobs'}, html: {class: "upload_form"} do |f| %>
+    <div id="extra-info">
+        <%= f.text_field :fb_url, class: 'text_field', placeholder: 'Facebook URL' %>
+    </div>
+    <div class="col-xs-2 col-xs-offset-5">
+        <%= f.submit "Resume process", class:"btn btn-block btn-primary" %>
+    </div>
+<% end %>
