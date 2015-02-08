@@ -6,16 +6,15 @@ class WatermarkFilesWorker
     puts "HELLO HELLO"
     puts job_id
 
-    job = Job.find(job_id)
+    job = Job.find_by_id(job_id)
     p job
     
-    if job.blank? or job.started
+    if job.blank?
       return
     else
-      job.started = true
       job.watermark_it
     end
 
-    Results.job_mail(job_id).deliver
+    puts Results.job_mail(job_id).deliver
   end
 end

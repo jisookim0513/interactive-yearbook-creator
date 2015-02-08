@@ -1,6 +1,9 @@
 class JobsController < ApplicationController
   def create
-    @job = Job.create( job_params )
+    par = job_params
+    par[:started] = false
+    @job = Job.create( par )
+    @job.make_watermark_worker
   end
 
   private

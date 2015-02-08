@@ -22,23 +22,23 @@ require 'tempfile'
 
 class Job < ActiveRecord::Base
   include WatermarkHelper
-  
+
   has_many :images
-  
+
   has_attached_file :file, :storage => :s3, :s3_credentials => S3_CREDENTIALS
   has_attached_file :output, :storage => :s3, :s3_credentials => S3_CREDENTIALS
   do_not_validate_attachment_file_type :file
 
-  after_commit :make_watermark_worker
-  
+  # after_commit :make_watermark_worker
+
   def watermark_it
     puts 'watermarking...'
     filename = "#{Rails.root}/tmp/" + self.file_file_name
     puts filename
-    
+
     watermark(self.info, self.file.expiring_url, filename)
     # TODO: check if helper returns true
-    
+
     file = File.open(filename)
     self.output = file
     # self.output.save
@@ -46,6 +46,14 @@ class Job < ActiveRecord::Base
   end
 
   def make_watermark_worker
+    if self.started
+      return
+    end
+
+    self.started = true
+    self.save
+
     WatermarkFilesWorker.perform_async(self.id)
   end
+
 end
