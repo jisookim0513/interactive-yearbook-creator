@@ -8,7 +8,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 }
 
 function onChange(file) {
-    document.getElementById("uploadFile").value = file.name;
+    document.getElementById("uploadFile").innerHTML = file.name;
 }
 
 function handleFiles(files) {
