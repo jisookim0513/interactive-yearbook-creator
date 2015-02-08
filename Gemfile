@@ -41,6 +41,8 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem "paperclip", "~> 4.2"
+gem 'aws-sdk', '~> 1.5.7'
+
 gem "live_paper"
 
 gem 'annotate', '~> 2.6.5'
