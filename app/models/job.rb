@@ -32,12 +32,16 @@ class Job < ActiveRecord::Base
   
   def watermark_it
     puts 'watermarking...'
-    filename = Tempfile.new(['tmp', '.jpg'])
+    filename = "#{Rails.root}/" + self.file_file_name
+    puts filename
+    
     watermark(self.info, self.file.expiring_url, filename)
     # TODO: check if helper returns true
+    
     file = File.open(filename)
     self.output = file
-    self.output.save
+    # self.output.save
+    self.save
   end
 
   def make_watermark_worker
