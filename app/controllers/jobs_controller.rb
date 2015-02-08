@@ -10,6 +10,8 @@ class JobsController < ApplicationController
 
   def job_params
     p params
-    params.require(:job).permit(:school, :class_year, :file)
+    params.require(:job).permit(:email, :info, :file)
   end
 end
+
+

@@ -36,8 +36,7 @@ class Job < ActiveRecord::Base
     watermark(self.info, self.file.expiring_url, filename)
     # TODO: check if helper returns true
     file = File.open(filename)
-    self.output.file = file
-    self.output.file.save
+    self.output = file
     self.output.save
   end
 
