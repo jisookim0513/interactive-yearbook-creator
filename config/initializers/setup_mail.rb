@@ -1,4 +1,4 @@
-Bplan::Application.config.action_mailer.delivery_method = :smtp
+Yearbook::Application.config.action_mailer.delivery_method = :smtp
 
 ActionMailer::Base.perform_deliveries = true
 ActionMailer::Base.raise_delivery_errors = true
