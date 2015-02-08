@@ -39,7 +39,8 @@ dataDict = {
     actions:[
       {
         type: "webpage",
-        icon: {id: "533"},  # TODO: Replace with FB icon
+        label: "Facebook",
+        icon: {id: "536"},
         data: {URL: redirectUrl}
       }
     ]
