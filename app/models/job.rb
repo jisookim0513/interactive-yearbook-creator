@@ -32,7 +32,7 @@ class Job < ActiveRecord::Base
 
   # after_commit :make_watermark_worker
 
-  def watermark_it
+  def watermark_it(fb_info)
     if not self.output.blank?
       return
     end
@@ -41,7 +41,7 @@ class Job < ActiveRecord::Base
     filename = "#{Rails.root}/tmp/" + self.file_file_name
     puts filename
 
-    fb_info = get_facebook_info(self.info)[0]
+    # fb_info = get_facebook_info(self.info)[0]
     
     watermark(fb_info, self.file.expiring_url, filename)
     # TODO: check if helper returns true
@@ -52,11 +52,11 @@ class Job < ActiveRecord::Base
     self.save
   end
 
-  def make_watermark_worker
+  def make_watermark_worker(fb_info)
     if self.started
       return
     end
-    WatermarkFilesWorker.perform_async(self.id)
+    WatermarkFilesWorker.perform_async([self.id, fb_info])
   end
 
 end

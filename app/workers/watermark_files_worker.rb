@@ -2,7 +2,9 @@
 class WatermarkFilesWorker
   include Sidekiq::Worker
   
-  def perform(job_id)
+  def perform(args)
+    job_id, fb_info = args
+    
     puts "HELLO HELLO"
     puts job_id
 
@@ -15,7 +17,7 @@ class WatermarkFilesWorker
     else
       job.started = true
       job.save
-      job.watermark_it
+      job.watermark_it fb_info
     end
 
     puts Results.job_mail(job_id).deliver

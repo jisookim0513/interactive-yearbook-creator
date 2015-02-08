@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   get 'missingfb' => 'static#missing_fb' 
 
-  resources :jobs
+  post 'create_missing' => 'jobs#create_missing'
+  
+  resources :jobs 
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -12,20 +12,11 @@
     </h3>
 </div>
 
-<%= form_for @job, url: {action: "create", controller: 'jobs'}, html: {class: "upload_form"} do |f| %>
+<%= form_for @job, url: {action: "create_missing", controller: 'jobs'}, html: {class: "upload_form"} do |f| %>
     <div id="extra-info">
         <%= f.text_field :fb_url, class: 'text_field', placeholder: 'Facebook URL' %>
     </div>
-    <div class="fileUpload btn btn-primary">
-        <span>Upload file <span class="fa fa-upload"></span></span>
-        <input id="job_file2" type="file" class="upload" name="job[file]" onchange="onChange(this.files[0])"/>
-    </div>
-    <span id="uploadFile">Choose file</span>
-    <br/>
-    <div id="upload-file">
-        <%= f.file_field :file %>
-    </div>
     <div class="col-xs-2 col-xs-offset-5">
-        <%= f.submit "Make it Interactive", class:"btn btn-block btn-primary" %>
+        <%= f.submit "Resume process", class:"btn btn-block btn-primary" %>
     </div>
 <% end %>
