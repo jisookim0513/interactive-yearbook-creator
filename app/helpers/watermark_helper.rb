@@ -3,8 +3,15 @@ module WatermarkHelper
            secret: Rails.application.secrets.link_client_secret }
 
   ACCESS_TOKEN = Rails.application.secrets.facebook_token
-  
-  def watermark(search, jpeg_url, output_file)
+
+  def extract_facebook_info(id_name_dict, graph)
+    fb_name = id_name_dict["name"]
+    fb_id = id_name_dict["id"]
+    fb_image_url = graph.get_picture(fb_id, {:height => "300", :width => "300"})
+    return [fb_name, fb_id, fb_image_url]
+  end
+
+  def get_facebook_info(search)
     begin
       graph = Koala::Facebook::API.new(ACCESS_TOKEN)
       search = search.split
@@ -14,13 +21,22 @@ module WatermarkHelper
         lst = graph.search(search.join(" "), {:type => "user"})
         search.pop
       end
-      if lst.count != 1
-        return false
+      if lst.count > 3
+        return []
+      else
+        return lst.map {|x| extract_facebook_info(x, graph)}
       end
-      fb_name = lst[0]["name"]
-      id = lst[0]["id"]
-      fb_image_url = graph.get_picture(id, {:height => "300", :width => "300"})
-      redirect_url = "http://www.facebook.com/" + id
+    rescue
+      return []
+    end
+  end
+  
+  def watermark(fb_info, jpeg_url, output_file)
+    begin
+      fb_name = fb_info[0]
+      fb_id = fb_info[1]
+      fb_image_url = fb_info[2]
+      redirect_url = "http://www.facebook.com/" + fb_id
     
       lp = LivePaper.auth({id: Creds[:id], secret: Creds[:secret]})
       image = LivePaper::Image.upload jpeg_url
@@ -56,6 +72,7 @@ module WatermarkHelper
     rescue
       puts "Error during watermarking"
       return false
+    end
   end
 
 end
