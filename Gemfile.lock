@@ -59,6 +59,8 @@ GEM
       addressable
     erubis (2.7.0)
     execjs (2.3.0)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
     hike (1.2.3)
@@ -74,6 +76,10 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.2)
+    koala (1.11.1)
+      addressable
+      faraday
+      multi_json
     live_paper (0.0.21)
       rest-client
     mail (2.5.4)
@@ -84,6 +90,7 @@ GEM
     minitest (5.5.1)
     multi_json (1.10.1)
     multi_xml (0.5.5)
+    multipart-post (2.0.0)
     netrc (0.10.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
@@ -169,6 +176,7 @@ DEPENDENCIES
   font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
+  koala
   live_paper
   nokogiri
   paperclip (~> 4.2)

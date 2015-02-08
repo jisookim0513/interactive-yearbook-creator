@@ -57,3 +57,6 @@ gem 'annotate', '~> 2.6.5'
 # for mail
 gem 'premailer-rails'
 gem 'nokogiri'
+
+# for facebook
+gem 'koala'

@@ -1,11 +1,16 @@
 require "koala"
 require "live_paper"
 
-ACCESS_TOKEN = "FB TOKEN HERE"
+ACCESS_TOKEN = "ID HERE"
 LIVE_PAPER_ID = "ID HERE"
 LIVE_PAPER_SECRET = "SECRET HERE"
 SEARCH = "Judy Wang berkeley"
 graph = Koala::Facebook::API.new(ACCESS_TOKEN)
+
+# oauth = Koala::Facebook::OAuth.new(APP_ID, APP_SECRET)
+# new_access_info = oauth.exchange_access_token_info ACCESS_TOKEN
+
+
 lst = graph.search(SEARCH, {:type => "user"})
 # TODO: If lst has no elements, remove one search term and try again
 # TODO: If lst has too many elements, give up
