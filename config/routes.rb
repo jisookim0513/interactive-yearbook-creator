@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get 'missingfb' => 'static#missing_fb' 
 
-  post 'create_missing' => 'jobs#create_missing'
+  patch 'create_missing' => 'jobs#create_missing'
   
   resources :jobs 
 
