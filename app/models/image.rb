@@ -9,4 +9,8 @@
 #
 
 class Image < ActiveRecord::Base
+
+  has_attached_file :original
+  has_attached_file :watermarked
+  
 end
