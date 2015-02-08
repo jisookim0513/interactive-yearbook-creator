@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208012159) do
+ActiveRecord::Schema.define(version: 20150208012923) do
 
   create_table "images", force: true do |t|
     t.integer  "status"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20150208012159) do
     t.string   "watermarked_content_type"
     t.integer  "watermarked_file_size"
     t.datetime "watermarked_updated_at"
+    t.integer  "job_id"
+    t.integer  "metadata_id"
   end
 
   create_table "jobs", force: true do |t|
