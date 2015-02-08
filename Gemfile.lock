@@ -31,20 +31,17 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (5.0.1.20140414130214)
-<<<<<<< HEAD
     autoprefixer-rails (5.1.4)
       execjs
       json
-    bootstrap-sass (3.3.3)
-      autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.2.19)
-=======
     aws-sdk (1.5.8)
       httparty (~> 0.7)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
->>>>>>> d93412a9c0d13fdf6449cb1c088de85701845b2f
+    bootstrap-sass (3.3.3)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.2.19)
     builder (3.2.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -155,12 +152,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-<<<<<<< HEAD
-  bootstrap-sass (~> 3.3.3)
-=======
   annotate (~> 2.6.5)
   aws-sdk (~> 1.5.7)
->>>>>>> d93412a9c0d13fdf6449cb1c088de85701845b2f
+  bootstrap-sass (~> 3.3.3)
   coffee-rails (~> 4.0.0)
   font-awesome-rails
   jbuilder (~> 2.0)
