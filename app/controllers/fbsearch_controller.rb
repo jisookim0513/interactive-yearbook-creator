@@ -1,0 +1,2 @@
+class FbsearchController < ApplicationController
+end

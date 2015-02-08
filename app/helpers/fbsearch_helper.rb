@@ -1,0 +1,2 @@
+module FbsearchHelper
+end
