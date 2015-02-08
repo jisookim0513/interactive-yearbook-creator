@@ -23,8 +23,8 @@ module ZipHelper
   end
 
   def process_images_from_job(job)
-  	zip_name = job.file_file_name # !!! NOT SURE IF SAVED AS RELATIVE PATH OR ACTUAL PATH
-  	Zip::File.open(zip_name) do |zip_file|
+  	zip_file = job.file.expiring_url(10)
+  	#Zip::File.open(zip_name) do |zip_file|
 	  	# Handle entries one by one
 	  	zip_file.each do |entry|
 	  		original_file_name = entry.name
