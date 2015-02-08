@@ -56,6 +56,7 @@ module WatermarkHelper
     rescue
       puts "Error during watermarking"
       return false
+    end
   end
 
 end
