@@ -9,6 +9,7 @@ class JobsController < ApplicationController
   # Be sure to update your create() and update() controller methods.
 
   def job_params
+    p params
     params.require(:job).permit(:school, :class_year, :file)
   end
 end
