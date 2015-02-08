@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208012923) do
+ActiveRecord::Schema.define(version: 20150208031327) do
 
   create_table "images", force: true do |t|
     t.integer  "status"
@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(version: 20150208012923) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.text     "school"
+    t.integer  "class_year"
   end
 
   create_table "metadata", force: true do |t|

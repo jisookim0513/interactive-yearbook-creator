@@ -1,0 +1,40 @@
+<div class="top" style="text-align: center">
+    <h1>
+        <i class="fa fa-facebook-official"></i>
+        <i class="fa fa-book"></i>
+        Interactive Yearbook Creator 
+    </h1>
+</div>
+<!-- <div class="col-xs-5 col-xs-offset-4" style="padding-top: 10px; padding-bottom: 10px">
+    <span class="col-xs-3">School Name:</span><span class="col-xs-2"><input name="schoolName" type="text" size="37" id="schoolName"/></span><br><br>
+    <span class="col-xs-3">Class Year:</span><span class="col-xs-2"><input name="classYear" type="text" size="37" id="classYear"/></span>
+</div>
+<div class="col-xs-4 col-xs-offset-4" style="padding-top: 10px; padding-bottom: 10px">
+    <button class="btn btn-block btn-info" onclick="onLoad()">
+        Upload file <span class="fa fa-upload"></span>
+    </button>
+    <br>
+    <input type="file" id="fileInput" onchange="handleFiles(this.files)" style="visibility:hidden;position:absolute;top:-50;left:-50"/>
+    <div style="text-align: center">
+        File selected: 
+        <span id="fileStatus"></span>
+        <br>
+        <br>
+    </div>
+    <button class="btn btn-block btn-info">
+        Make it interactive <span class="fa fa-gittip"></span>
+    </button>
+</div> -->
+
+<%= form_for @job, url: {action: "create", controller: 'jobs'}, html: {class: "upload_form"} do |f| %>
+   
+    School Name: <%= f.text_field :school %>
+    <br/>
+    Class Year: <%= f.text_field :class_year %>
+    <br/>
+    <%=  f.file_field :file %>
+    <br/>
+  <%= f.submit "Create" %>
+<% end %>
+
+
