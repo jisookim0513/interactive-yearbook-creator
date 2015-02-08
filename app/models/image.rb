@@ -20,8 +20,8 @@
 
 class Image < ActiveRecord::Base
 
-  has_attached_file :original
-  has_attached_file :watermarked
+  has_attached_file :original, :storage => :s3, :s3_credentials => S3_CREDENTIALS
+  has_attached_file :watermarked, :storage => :s3, :s3_credentials => S3_CREDENTIALS
   has_one :metadata
 
   belongs_to :job
