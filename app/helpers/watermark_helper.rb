@@ -5,6 +5,7 @@ module WatermarkHelper
   def watermark(search, jpeg_url, output_file)
     graph = Koala::Facebook::API.new(ACCESS_TOKEN)
     search = search.split
+    search = search.flat_map {|x| x.split("_")}
     lst = []
     while (search.count > 0) and (lst.count == 0) do
       lst = graph.search(search.join(" "), {:type => "user"})
