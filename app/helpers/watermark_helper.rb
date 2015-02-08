@@ -19,7 +19,7 @@ module WatermarkHelper
     fb_image_url = graph.get_picture(id, {:height => "300", :width => "300"})
     redirect_url = "http://www.facebook.com/" + id
     
-    lp = LivePaper.auth({id: Creds.id, secret: Creds.secret})
+    lp = LivePaper.auth({id: Creds[:id], secret: Creds[:secret]})
     image = LivePaper::Image.upload jpeg_url
     t = LivePaper::WmTrigger.create(name: 'watermark', watermark: {strength: 10, resolution: 75, imageURL: image})
 
