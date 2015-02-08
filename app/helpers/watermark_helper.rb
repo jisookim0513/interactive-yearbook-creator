@@ -2,6 +2,8 @@ module WatermarkHelper
   Creds = {id: Rails.application.secrets.link_client_id,
            secret: Rails.application.secrets.link_client_secret }
 
+  ACCESS_TOKEN = "CAACEdEose0cBABeDVg0hTHVqsNjeZAYyKMqbaO6bttXcKnexrwIcmDWT5W3horIHc96vPsROfZChuY1Lra7AdEkuIY63tyDcCD99PbsZCtointdpmXaL8nui0OMbFPogKfSbBqgvfThqJQSlp6hHdPa4Ozk2AXfZBvdeGWsCZBXHzRQOMW6v4y6zKEhykGncJca6N0QH5iKFKTkUup6QZBk8SK0iQ1A6wZD"
+  
   def watermark(search, jpeg_url, output_file)
     graph = Koala::Facebook::API.new(ACCESS_TOKEN)
     search = search.split
