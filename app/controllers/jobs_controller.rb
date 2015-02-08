@@ -18,6 +18,7 @@ class JobsController < ApplicationController
       return
     else
       @job = Job.create(par)
+      session[:job_id] = @job.id
       render 'static/missing_fb'
       return
     end
@@ -28,10 +29,13 @@ class JobsController < ApplicationController
     par = job_params
     par[:started] = false
 
+    @job = Job.find_by_id(session[:job_id])
+    p @job
+    
     fb_url = par.delete(:fb_url)
     fb_info = get_facebook_info_from_url(fb_url)
     
-    @job = Job.create(par)
+    @job.update(par)
     @job.make_watermark_worker(fb_info)
     render :create
     
