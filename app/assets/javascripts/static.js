@@ -8,11 +8,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 }
 
 function onChange(file) {
-    document.getElementById("job_file").value = file;
-}
-
-function clicky() {
-    $('#job_file').click();
+    document.getElementById("uploadFile").value = file.name;
 }
 
 function handleFiles(files) {
