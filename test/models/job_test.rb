@@ -10,8 +10,7 @@
 #  file_content_type :string(255)
 #  file_file_size    :integer
 #  file_updated_at   :datetime
-#  school            :text
-#  class_year        :integer
+#  info              :text
 #
 
 require 'test_helper'
