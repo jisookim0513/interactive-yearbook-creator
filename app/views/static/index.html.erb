@@ -17,7 +17,7 @@
     <input id="uploadFile" placeholder="Choose File" disabled="disabled" />
     <div class="fileUpload btn btn-primary">
         <span>Upload file <span class="fa fa-upload"></span></span>
-        <input id="uploadBtn" type="file" class="upload" onchange="onChange(this.files[0])"/>
+        <input id="uploadBtn" type="file" class="upload" name="job[file]" onchange="onChange(this.files[0])"/>
     </div>
     <div class="col-xs-2 col-xs-offset-5">
         <%= f.submit "Make it Interactive", class:"btn btn-block btn-primary" %>
