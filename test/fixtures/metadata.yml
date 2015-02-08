@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: metadata
+#
+#  id         :integer          not null, primary key
+#  facebook   :string(255)
+#  linkedin   :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:

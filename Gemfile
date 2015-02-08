@@ -43,3 +43,8 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass', '~> 3.3.3'
 gem "paperclip", "~> 4.2"
 gem "font-awesome-rails"
+gem 'aws-sdk', '~> 1.5.7'
+
+gem "live_paper"
+
+gem 'annotate', '~> 2.6.5'
