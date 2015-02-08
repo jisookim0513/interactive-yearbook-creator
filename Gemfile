@@ -40,11 +40,23 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# front end
 gem 'bootstrap-sass', '~> 3.3.3'
-gem "paperclip", "~> 4.2"
 gem "font-awesome-rails"
+
+# storing images
+gem "paperclip", "~> 4.2"
 gem 'aws-sdk', '~> 1.5.7'
 
+# link stuff
 gem "live_paper"
 
+# to annotate models
 gem 'annotate', '~> 2.6.5'
+
+# for mail
+gem 'premailer-rails'
+gem 'nokogiri'
+
+# for facebook
+gem 'koala'
