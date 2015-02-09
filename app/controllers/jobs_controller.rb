@@ -8,9 +8,16 @@ class JobsController < ApplicationController
     @job = Job.create(par)
 
     if @job.file_content_type == 'image/jpeg'
+
+      info = @job.file_file_name
+      info = info.split('.')[0] # remove jpg
+      info = info.gsub(/[ _]/, ' ')
+      info = info + ' ' + par[:info]
       
-      fb_list = get_facebook_info(par[:info])
+      fb_list = get_facebook_info(info)
       p fb_list
+
+
       
       if fb_list.count == 1
         # make watermark and go to processed page
