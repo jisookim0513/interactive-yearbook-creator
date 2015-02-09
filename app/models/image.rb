@@ -24,5 +24,9 @@ class Image < ActiveRecord::Base
   has_attached_file :watermarked, :storage => :s3, :s3_credentials => S3_CREDENTIALS
   has_one :metadata
 
+  do_not_validate_attachment_file_type :original
+  do_not_validate_attachment_file_type :watermarked
+
+  
   belongs_to :job
 end

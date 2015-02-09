@@ -5,22 +5,28 @@ class JobsController < ApplicationController
     par = job_params
     par[:started] = false
 
-    fb_list = get_facebook_info(par[:info])
+    @job = Job.create(par)
 
-    p fb_list
-    
-    if fb_list.count == 1
-      # make watermark and go to processed page
-      fb_info = fb_list[0]
-      @job = Job.create(par)
-      @job.make_watermark_worker(fb_info)
-      render :create
-      return
+    if @job.file_content_type == 'image/jpeg'
+      
+      fb_list = get_facebook_info(par[:info])
+      p fb_list
+      
+      if fb_list.count == 1
+        # make watermark and go to processed page
+        fb_info = fb_list[0]
+        @job.make_watermark_worker(fb_info)
+        render :create
+        return
+      else
+        session[:job_id] = @job.id
+        render 'static/missing_fb'
+        return
+      end
+
     else
-      @job = Job.create(par)
-      session[:job_id] = @job.id
-      render 'static/missing_fb'
-      return
+      @job.make_watermark_worker(nil)
+      
     end
     
   end

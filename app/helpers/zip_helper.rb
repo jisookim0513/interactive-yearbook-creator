@@ -35,49 +35,63 @@ module ZipHelper
     Dir.mkdir(tmp_dir) unless File.exists?(tmp_dir)
     sleep(10) #Waits until the file finishes being made and directory
 
+    images = []
+    
     Zip::File.open(zip_path) do |zip_file|
       # Handle entries one by one
+      # p zip_file
+      
       zip_file.each do |entry|
+        # p entry
+        
         original_file_name = entry.name
         original_content_type = get_content_type(original_file_name)
         original_file_size = entry.size
         
-        watermarked_picture = watermark(original_file_name)
+        # watermarked_picture = watermark(original_file_name)
         # watermarked_content_type = get_content_type(watermarked_picture)
         # watermarked_file_name = watermarked_picture.name
         # watermarked_file_size = watermarked.size
         
-        entry.extract("#{Rails.root}" + tmp_dir + "/" + original_file_name)
+        entry.extract(tmp_dir + "/" + original_file_name)
+
+        # puts tmp_dir
+        # puts tmp_dir + "/" + original_file_name
+        
         image = Image.create({ :status => 1, 
-                               :original_file_name => original_file_name,
-                               :original_content_type => original_content_type,
-                               :original_file_size => original_file_size,
-                               :original_updated_at => Time.now,
+                               # :original_file_name => original_file_name,
+                               # :original_content_type => original_content_type,
+                               # :original_file_size => original_file_size,
+                               # :original_updated_at => Time.now,
                                #:watermarked_file_name => original_file_name,
                                #:watermarked_content_type => original_content_type,
                                #:watermarked_file_size => original_file_size,
                                #:watermarked_updated_at => Time.now,
                                :job_id => job.id
                              })
+
+        
+        image.original = File.open(tmp_dir + "/" + original_file_name)
+        image.save
+        
         metadata = Metadata.create({
                                      #:facebook => "magikarp",
                                      #:linkedin => "magikarp",
                                    })
         
         image.metadata_id = metadata.id
-        
+
+        images.push(image)
       end
     end
-    return tmp_dir
+    puts 'returning tmp_dir'
+    # return tmp_dir
+    return images
   end
   
   def get_content_type(file_name)
     temp = File.extname(file_name)
     return temp[1,temp.length]
-  end
-
-  def watermark(x)
-    return "M"
   end
 
   def temp()

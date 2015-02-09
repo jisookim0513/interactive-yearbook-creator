@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208205450) do
+ActiveRecord::Schema.define(version: 20150208231156) do
 
   create_table "images", force: true do |t|
     t.integer  "status"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20150208205450) do
   end
 
   create_table "metadata", force: true do |t|
-    t.string   "facebook"
+    t.text     "facebook",   limit: 255
     t.string   "linkedin"
     t.datetime "created_at"
     t.datetime "updated_at"
